@@ -6,6 +6,7 @@ import { AiOutlineSearch } from "react-icons/ai";
 const Navbar = () => {
   const { userId } = auth();
   console.log(userId);
+  
   return (
     <>
       <nav className=" gap-5 md:gap-20 flex flex-row w-full shadow-lg shadow-seconday p-3">
