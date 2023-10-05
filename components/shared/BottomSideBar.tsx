@@ -20,7 +20,7 @@ function Bottombar()
               href={link.route}
               key={link.label}
               className={`relative flex justify-start gap-4 rounded-lg p-4 ${
-                isActive && "shadow-lg shadow-neutral-400"
+                isActive && "shadow-lg shadow-neutral-400 bg-[#d9cede]"
               }`}
             >
               <Image
