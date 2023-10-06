@@ -9,7 +9,7 @@ export async function updateUser(
   username: string,
   year: string,
   gender: string,
-  skills: string,
+  skills: string[],
   image: string,
   path: string
 ): Promise<void> {
@@ -40,5 +40,18 @@ export async function updateUser(
       }
   } catch (error:any) {
         throw new Error (`Failed to create / update user: ${error.message}`)
+        
+  }
+}
+
+export async function fetchUser (userId:string)
+{
+  try {
+    await connectToDB();
+
+    return await User.findOne({id:userId})
+
+  } catch (error) {
+    
   }
 }

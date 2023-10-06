@@ -7,6 +7,6 @@ export const UserValidation = z.object({
     .min(3, { message: "Minimum 3 characters." })
     .max(30, { message: "Maximum 30 caracters." }),
   gender: z.string(),
-  skills: z.string(),
+  skills: z.array(z.string()),
   year: z.string(),
 });

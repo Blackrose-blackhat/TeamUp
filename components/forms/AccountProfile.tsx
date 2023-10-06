@@ -17,6 +17,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import {TagsInput} from "react-tag-input-component"
+
 
 import * as z from "zod";
 import { useForm } from "react-hook-form";
@@ -36,7 +38,7 @@ interface Props {
     objectId: string;
     username: string;
     Gender: string;
-    skills: string;
+    skills: string[];
     institutionName: string;
     institutionAddress: string;
     image: string;
@@ -46,6 +48,7 @@ interface Props {
 }
 
 const AccountProfile = ({ user, btnTitle }: Props) => {
+  const [selected, setSelected] = useState<string[]>([]); 
 
   const [files, setfiles] = useState<File[]>([]);
   const { startUpload } = useUploadThing("media");
@@ -56,7 +59,7 @@ const AccountProfile = ({ user, btnTitle }: Props) => {
     defaultValues: {
       profile_photo: user?.image || "",
       username: user?.username || "",
-      skills: user?.skills || "",
+      skills: user?.skills || [""],
       institutionAddress: user?.institutionAddress || "",
       institutionName: user?.institutionName || "",
       gender: user?.Gender || "",
@@ -64,6 +67,7 @@ const AccountProfile = ({ user, btnTitle }: Props) => {
     },
   });
   const onSubmit = async (values: z.infer<typeof UserValidation>) => {
+    console.log(values.skills)
   
     const blob = values.profile_photo;
 
@@ -157,6 +161,7 @@ const AccountProfile = ({ user, btnTitle }: Props) => {
                     onChange={(e) => handleImageChange(e, field.onChange)}
                   />
                 </FormControl>
+                <FormMessage />
               </FormItem>
             )}
           />
@@ -164,14 +169,14 @@ const AccountProfile = ({ user, btnTitle }: Props) => {
             control={form.control}
             name="username"
             render={({ field }) => (
-              <FormItem className="flex items-center gap-3 w-full">
-                <FormLabel className="text-semibold mt-1 text-lg text-slate-500 ">
+              <FormItem >
+                <FormLabel>
                   Username
                 </FormLabel>
-                <FormControl className="flex-1 text-semibold ">
+                <FormControl className=" text-semibold ">
                   <input
                     type="text"
-                    className="focus:outline-none p-2 bg-white rounded-md text-slate-700"
+                    className=" w-full focus:outline-none p-2 bg-white rounded-md text-slate-700"
                     {...field}
                   />
                 </FormControl>
@@ -183,19 +188,22 @@ const AccountProfile = ({ user, btnTitle }: Props) => {
             name="year"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Email</FormLabel>
+                <FormLabel>Year</FormLabel>
                 <Select onValueChange={field.onChange}>
                   <FormControl>
                     <SelectTrigger>
-                      <SelectValue placeholder="Select a verified email to display" />
+                      <SelectValue placeholder="select year..." />
                     </SelectTrigger>
                   </FormControl>
                   <SelectContent>
                     <SelectItem value="1">1</SelectItem>
                     <SelectItem value="2">2</SelectItem>
                     <SelectItem value="3">3</SelectItem>
+                    <SelectItem value="4">4</SelectItem>
+                    <SelectItem value="passout">Passout</SelectItem>
                   </SelectContent>
                 </Select>
+                <FormMessage />
               </FormItem>
             )}
           />
@@ -205,7 +213,7 @@ const AccountProfile = ({ user, btnTitle }: Props) => {
             name="gender"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Email</FormLabel>
+                <FormLabel>Gender</FormLabel>
                 <Select onValueChange={field.onChange}>
                   <FormControl>
                     <SelectTrigger>
@@ -218,6 +226,7 @@ const AccountProfile = ({ user, btnTitle }: Props) => {
                     
                   </SelectContent>
                 </Select>
+                <FormMessage />
               </FormItem>
             )}
           />
@@ -225,29 +234,30 @@ const AccountProfile = ({ user, btnTitle }: Props) => {
             control={form.control}
             name="skills"
             render={({ field }) => (
-              <FormItem className="flex items-center gap-3 w-full">
-                <FormLabel className="text-semibold mt-1 text-lg text-slate-500 ">
+              <FormItem>
+                <FormLabel >
                   Skills
                 </FormLabel>
-                <FormControl className="flex-1 text-semibold ">
-                  <input
-                    type="skills"
-                    accept="text"
-                    placeholder="separate your skill with a comma"
-                    className="focus:outline-none p-2  bg-white rounded-md text-slate-700"
-                    {...field}
-                  />
+                <FormControl >
+                <TagsInput 
+                value={selected}
+                onChange={field.onChange}
+                name="tags"
+                placeHolder="tags"
+                />
                 </FormControl>
+                <FormMessage />
               </FormItem>
             )}
           />
 
-          <Button className="bg-[#4452BD] hover:bg-blue-600  " type="submit">
+          <Button className="bg-[#4452BD] hover:bg-blue-600   " type="submit">
             {btnTitle}
           </Button>
-          <Button onClick={async () => await connectToDB()}></Button>
+          
         </form>
       </Form>
+      
     </>
   );
 };

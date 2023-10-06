@@ -13,11 +13,11 @@ const page = async() => {
     objectId:'',
     username:   user?.firstName || "",
     Gender :   "",
-    skills :   "",
+    skills :   [],
     institutionName :   "",
     institutionAddress :   "",
     image :  user?.imageUrl || "",
-    year:  1
+    year:  ""
   }
   return (
     <main className='mx-auto flex max-w-3xl flex-col justify-start px-10 py-10'>

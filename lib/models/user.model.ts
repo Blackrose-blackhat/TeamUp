@@ -7,7 +7,10 @@ const userSchema = new mongoose.Schema({
     image:{type:String , required:true},
     gender:{type:String ,required:true},
     year:{type:String,required:true},
-    skills:{type:String , required:true},
+    skills:{
+        type :[String],
+        required:true
+    },
     gigs :[
         {
             type:mongoose.Schema.Types.ObjectId,

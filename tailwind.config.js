@@ -8,12 +8,18 @@ module.exports = {
     './src/**/*.{ts,tsx}',
 	],
   theme: {
+    extend: {
+      colors:{
+        primary:'#4452BD'
+      }
+    },
     container: {
       center: true,
       padding: "2rem",
       screens: {
         "2xl": "1400px",
       },
+
     },
     extend: {
       keyframes: {
