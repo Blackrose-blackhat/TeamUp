@@ -4,9 +4,11 @@ import { SignOutButton, SignedIn } from "@clerk/nextjs";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
+import { useAuth } from "@clerk/nextjs";
 function LeftSidebar() {
   const router = useRouter();
   const pathName = usePathname();
+  const {userId} = useAuth();
   return (
     <section className="sticky left-0 top-0 z-20 flex h-screen w-fit flex-col justify-between overflow-auto   pb-5 pt-28 max-md:hidden">
       <div className="flex w-full flex-1 flex-col gap-10  px-6 ">
@@ -14,6 +16,10 @@ function LeftSidebar() {
           const isActive =
             (pathName.includes(link.route) && link.route.length > 1) ||
             pathName == link.route;
+
+            if(link.route === '/profile') link.route = `${link.route}/${userId}`
+
+
           return (
             <Link
               href={link.route}

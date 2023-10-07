@@ -36,4 +36,8 @@ export const sidebarLinks = [
     },
     
     
-]
+];
+export const profileTabs = [
+    { value: "Gigs", label: "Gigs", icon: "/assets/gigs.svg" },
+    
+  ];
