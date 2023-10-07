@@ -19,7 +19,7 @@ function LeftSidebar() {
               href={link.route}
               key={link.label}
               className={`relative flex justify-start gap-4 rounded-lg p-4 ${
-                isActive && "shadow-lg shadow-neutral-400 bg-[#d9cede]"
+                isActive && "shadow-lg shadow-neutral-400 bg-slate-100"
               }`}
             >
               <Image

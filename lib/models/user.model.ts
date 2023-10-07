@@ -14,7 +14,7 @@ const userSchema = new mongoose.Schema({
     gigs :[
         {
             type:mongoose.Schema.Types.ObjectId,
-            ref:'Gigs'
+            ref:'gigs'
         }
     ],
 

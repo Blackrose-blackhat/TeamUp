@@ -21,7 +21,7 @@ export default function RootLayout({
   return (
     <ClerkProvider>
       <html lang="en">
-        <body className={`${inter.className} bg-stone-100  `}>
+        <body className={`${inter.className} bg-stone-200  `}>
         <Topbar />
         <main className="flex flex-row">
           <LeftSidebar />

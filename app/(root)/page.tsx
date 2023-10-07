@@ -1,11 +1,37 @@
-import { UserButton } from "@clerk/nextjs";
 
-export default function Home() {
+import { fetchPosts } from "@/lib/actions/Gigs.action";
+import { UserButton } from "@clerk/nextjs";
+import { currentUser } from "@clerk/nextjs";
+import GigsCard from "../../components/cards/GigsCard"
+export default async function Home()  {
+  const user = await currentUser();
+  const result = await fetchPosts(1 ,30);
+
+  console.log(result);
+
+
   return (
-    <main className="flex min-h-screen flex-1 flex-col items-center  px-6 pb-10 pt-28 max-md:pb-32 sm:px-10 ">
-     <div>
-      <h1 >Home</h1>
-     </div>
-    </main>
+    <>
+     
+
+      <section className="mt-9 flex flex-col gap-10">
+        {result.posts.length === 0 ? (
+          <p>No Gigs Found</p>
+        ) : (
+          <>
+            {result.posts.map((post) => (
+              <GigsCard
+                key = {post._id}
+                id={post._id}
+                currentUserId={user?.id || ""}
+                content={post.text}
+                author={post.author}
+                tags={post.tags}
+                createdAt={post.createdAt}
+                />
+            ))}
+          </>
+        )}
+        </section>    </>
   )
 }
