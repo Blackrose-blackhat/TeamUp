@@ -10,8 +10,15 @@ export async function updateUser(
   username: string,
   year: string,
   gender: string,
-  skills: string[],
+  skills: [],
   image: string,
+  instagram:string,
+  whatsapp:string,
+  linkedin:string,
+  github:string,
+  bio:string,
+  projects:string,
+  projecttitle:string,
   path: string
 ): Promise<void> {
 
@@ -27,7 +34,14 @@ export async function updateUser(
             gender,
             year,
             skills,
+            instagram,
+            whatsapp,
+            linkedin,
+            github,
             path,
+            bio,
+            projects,
+            projecttitle,
             onboarded:true,
         },
         {
@@ -114,6 +128,9 @@ export async function fetchUsers ({
       query.$or =[
         {
           username:{$regex:regex}
+        },
+        {
+          imgUrl : {$regex:regex}
         },
         {
           skills:{$regex:regex}

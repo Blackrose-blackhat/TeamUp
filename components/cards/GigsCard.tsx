@@ -1,4 +1,7 @@
+
+import Gigs from "@/lib/models/gig.models";
 import { excerpt, formatDateString } from "@/lib/utils";
+
 import Image from "next/image";
 import Link from "next/link";
 
@@ -23,11 +26,9 @@ const GigsCard = ({
   tags,
   createdAt,
 }: Props) => {
-  {console.log(tags.length)}
   return (
-    
-    <article className="   hover:bg-slate-100  delay-100 transition bg-white shadow-lg shadow-slate-500 rounded-md p-4 lg:p-8">
-        <Link href={`/gigs/${id}`}>
+    <article className=" delay-100 transition bg-slate-100 shadow-lg shadow-slate-500 rounded-md p-4 lg:p-8">
+      <Link href={`/gigs/${id}`}>
         <div className="flex flex-1 flex-row gap-7">
           <div className="flex flex-col items-center">
             <Link href={`/profile/${author.id}`} className="relative h-11 w-11">
@@ -38,7 +39,10 @@ const GigsCard = ({
                 className="cursor-pointer rounded-full"
               />
             </Link>
-            <div className="thread-card-bar" />
+            {/* {author.id === currentUserId && (
+              <button >Delete</button>
+            )}
+            */}
           </div>
           <div className="flex w-full flex-col">
             <Link href={`/profile/${author.id}`} className="w-fit">
@@ -49,26 +53,28 @@ const GigsCard = ({
             <p className="text-slate-500 font-semibold">
               {formatDateString(createdAt)}
             </p>
-            <p className="mt-2 text-regular py-5 text-lg text-slate-900 font-semibold">
-              {excerpt(content,50)}
+            <p className=" hidden lg:block w-fit mt-2 text-regular py-5 text-lg text-slate-900 font-semibold">
+              {excerpt(content, 50)}
+            </p>
+            <p className="block lg:hidden w-fit mt-2 text-regular py-5 text-lg text-slate-900 font-semibold ">
+            {excerpt(content, 30)}
             </p>
           </div>
         </div>
-        {tags  && (
+        {tags && (
           <div className=" p-3 gap-5 mt-5 rounded-md w-fit flex flex-row">
-          {tags.map((idx) => (
-            <div className=" cursor-pointer delay-75 text-zinc-700 hover:scale-105 font-semibold bg-stone-200 p-3  capitalize ">
-              {idx}
-            </div>
-          ))}
-        </div>
+            {tags.map((idx) => (
+              <div
+               
+                className=" rounded-lg cursor-pointer delay-105 text-white hover:scale-105 font-semibold bg-[#104f8f] hover:bg-[#3871ab] p-3 px-8  capitalize "
+              >
+                {idx}
+              </div>
+            ))}
+          </div>
         )}
-        
-          
-        
-        
-    </Link>
-      </article>
+      </Link>
+    </article>
   );
 };
 

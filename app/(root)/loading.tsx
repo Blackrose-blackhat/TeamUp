@@ -1,10 +1,13 @@
+"use client"
 import { Skeleton } from "@/components/ui/skeleton"
+import { motion } from "framer-motion"
 
 const Loading = () => {
   return (
-    <div className="flex p-10 items-center space-x-4">
-      <Skeleton className="h-70 w-full" />
-    </div>
+    <motion.div className="flex p-10 items-center space-x-4">
+      
+      <motion.h5>Loading</motion.h5>
+    </motion.div>
 
 
   )

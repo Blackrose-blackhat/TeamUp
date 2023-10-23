@@ -7,9 +7,25 @@ const userSchema = new mongoose.Schema({
     image:{type:String , required:true},
     gender:{type:String ,required:true},
     year:{type:String,required:true},
+
     skills:{
         type :[String],
         required:true
+    },
+    instagram:{
+        type:String,
+        
+       
+    },
+    whatsapp:{
+        type:String,
+    },
+    linkedin:{
+        type:String,
+        
+    },
+    github : {
+        type:String
     },
     gigs :[
         {
@@ -17,11 +33,23 @@ const userSchema = new mongoose.Schema({
             ref:'gigs'
         }
     ],
+    bio:{
+        type:String,
+        required:true
+    },
+    projects:{
+        type:String
+    },
+    projecttitle:{
+        type:String
+    },
 
     onboarded :{
         type:Boolean,
         default:false,
     },
+
+    
 })
 
 const User = mongoose.models.User || mongoose.model('User',userSchema);

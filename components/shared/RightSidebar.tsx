@@ -1,15 +1,9 @@
-"use client"
-function RightSideBar()
-{
-    return (
-        <section className="cutom-scrollbar rightsidebar">
-            <div className="flex flex-1 flex-col justify-start">
-                <h3 className="">
-                    Suggested Users
-                </h3>
-            </div>
-        </section>
-    )
+import React from 'react'
+
+const RightSidebar = () => {
+  return (
+    <div>RightSidebar</div>
+  )
 }
 
-export default RightSideBar
+export default RightSidebar

@@ -66,10 +66,12 @@ export async function fetchGigsById(id: string) {
         .populate({
             path:'author',
             model:User,
-            select:"_id id name image "
+            select:"_id id username image "
         }).exec();
         return gigs;
   } catch (error:any) {
     throw new Error(`Error opening gis ${error.message}`)
   }
 }
+
+

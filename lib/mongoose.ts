@@ -7,9 +7,9 @@ const MONGODB_URL =
 export const connectToDB = async () => {
   // mongoose.set('strictQuery',true);
 
-  if (!MONGODB_URL) return console.log("MONGODB_URL not found");
+  if (!MONGODB_URL) return;
 
-  if (isConnected) return console.log("already connected to MongoDB");
+  if (isConnected) return ;
 
   try {
     await mongoose.connect(MONGODB_URL, {
@@ -17,8 +17,8 @@ export const connectToDB = async () => {
       useUnifiedTopology: true,
     });
     isConnected = true;
-    console.log("Connected to mongoDB");
+    
   } catch (error) {
-    console.log(error);
+    
   }
 };

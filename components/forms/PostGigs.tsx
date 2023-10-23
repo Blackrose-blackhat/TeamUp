@@ -35,7 +35,7 @@ interface Props {
     objectId: string;
     username: string;
     Gender: string;
-    skills: [string];
+    skills: [];
     institutionName: string;
     institutionAddress: string;
     image: string;
@@ -105,6 +105,7 @@ function PostGigs({ userId }: { userId: string }) {
                   value={selected}
                   onChange={field.onChange}
                   placeHolder="tags"
+                 
                 />
               </FormControl>
               <FormMessage />

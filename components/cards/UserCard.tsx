@@ -10,17 +10,18 @@ interface Props {
   personType: string;
 }
 const UserCard = ({ id, username, imgUrl, skills, personType }: Props) => {
-  console.log(`skills are ${skills}`);
+ 
+
   return (
-    <article>
-      <div className=" bg-white rounded-md shadow-lg shadow-slate-500 p-5  justify-between w-full p-5 flex flex-row">
-        <div className=" items-center gap-5 flex flex-row justify-start w-1/2">
-          <div className="relative h-12 w-12 object-cover">
+    <article className="w-full lg:w-[32%] ">
+      <div className=" bg-white rounded-md shadow-lg shadow-slate-500 w-full align-middle items-center   justify-between  p-2 flex flex-col">
+        <div className=" items-center gap-5 flex flex-col  justify-start w-full">
+          <div className=" -mt-5 relative h-[5rem] w-[5rem] md:w-[6rem] md:h-[6rem] object-cover">
             <Image
               src={imgUrl}
-              alt="profile Image"
+              alt="logo"
               fill
-              className="rounded-full object-cover shadow-2xl"
+              className="rounded-full object-cover shadow-2xl text-sm"
             />
           </div>
           <div>
@@ -28,10 +29,17 @@ const UserCard = ({ id, username, imgUrl, skills, personType }: Props) => {
               {username}
             </p>
           </div>
+          <div className="w-full flex flex-wrap gap-3 lg:gap-8 px-4 items-center justify-center md:justify-center">
+            {skills.map((idx) => (
+              <div className=" bg-[#b7c9e2] cursor-pointer hover:scale-105 delay-75 font-semibold  w-fit p-2 text-slate-600 rounded-lg " key={idx}>
+                {idx}
+              </div>
+            ))}
+          </div>
         </div>
-        <div className="hover:opacity-95">
+        <div className=" p-5 w-full hover:opacity-95">
           <Link href={`/profile/${id}`}>
-            <Button>View</Button>
+            <Button className="w-full bg-[#104f8f] hover:bg-[#3871ab] ">View</Button>
           </Link>
         </div>
       </div>

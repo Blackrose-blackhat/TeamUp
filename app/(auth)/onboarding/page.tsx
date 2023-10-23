@@ -1,26 +1,42 @@
 import AccountProfile from '@/components/forms/AccountProfile'
 import Image from 'next/image'
 import { currentUser } from '@clerk/nextjs'
+import { fetchUser } from '@/lib/actions/user.actions';
+import {redirect} from "next/navigation"
 
 const page = async() => {
   const user = await currentUser();
-  // console.log(user?.firstName)
-  // console.log(user?.id)
-  const userInfo ={};
+  if(!user)
+    return null;
+
+
+  // user?.id)
+
+  const userInfo =await fetchUser(user.id);
+  if(userInfo?.onboarded) redirect("/");
+
+ 
   const userData ={
     // id:user?.id ,
     id:user?.id || "",
-    objectId:'',
-    username:   user?.firstName || "",
-    Gender :   "",
-    skills :   [],
-    institutionName :   "",
-    institutionAddress :   "",
-    image :  user?.imageUrl || "",
-    year:  ""
+    objectId:userInfo?._id,
+    username: userInfo?userInfo.username:user?.firstName,
+    Gender :   userInfo? userInfo.gender : "",
+    skills :   userInfo? userInfo.skills:"",
+    institutionName :userInfo ? userInfo.institutionName : "",
+    institutionAddress :userInfo ? userInfo.institutionName : "",
+    image :  userInfo ? userInfo.image:user?.imageUrl,
+    year:  userInfo ? userInfo.year:"",
+    instagram:userInfo?userInfo.instagram : "",
+    whatsapp:userInfo?userInfo.whatsapp : "",
+    linkedin:userInfo?userInfo.linkedin : "",
+    github:userInfo ? userInfo.github : "",
+    bio:userInfo ? userInfo.bio : "",
+    projects:userInfo ? userInfo.projects : "",
+    projecttitle:userInfo ? userInfo.projecttitle:""
   }
   return (
-    <main className='mx-auto flex max-w-3xl flex-col justify-start px-10 py-10'>
+    <main className='mx-auto flex max-w-6xl flex-col justify-start px-10 py-10'>
       <Image
         src="/logo.svg"
         alt='logo'

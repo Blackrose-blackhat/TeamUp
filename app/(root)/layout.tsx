@@ -22,18 +22,19 @@ export default function RootLayout({
     <ClerkProvider>
       <html lang="en">
         <body className={`${inter.className} bg-stone-200  `}>
-        <Topbar />
-        <main className="flex flex-row">
-          <LeftSidebar />
-          <section className="main-container">
-            <div className="w-full mx-w-4xl">
-              {children}
+          <Topbar />
+          <main className="flex flex-row justify-between scroll-smooth  ">
+            <LeftSidebar />
+            <section className="main-container w-full  ">
+              <div className="  overflow-hidden w-full mx-w-4xl p-5">{children}</div>
+            </section>
+            <div className="p-9 py-20 hidden lg:block">
+            <RightSideBar />
             </div>
-          </section>
-          <RightSideBar />
-
-        </main>
-        <Bottombar />
+              
+            
+          </main>
+          <Bottombar />
         </body>
       </html>
     </ClerkProvider>

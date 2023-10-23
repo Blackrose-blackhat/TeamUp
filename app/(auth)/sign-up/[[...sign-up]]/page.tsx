@@ -3,7 +3,10 @@ import React from 'react'
 
 const page = () => {
   return (
-    <SignUp />
+    <div className='flex flex-col justify-center align-middle items-center h-screen'>
+      <SignUp />
+    </div>
+    
   )
 }
 

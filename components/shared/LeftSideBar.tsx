@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useAuth } from "@clerk/nextjs";
+import { motion } from "framer-motion";
 function LeftSidebar() {
   const router = useRouter();
   const pathName = usePathname();
@@ -21,10 +22,15 @@ function LeftSidebar() {
 
 
           return (
+            <motion.div
+            layout
+            whileHover={{scale:1.1}}
+            
+            >
             <Link
               href={link.route}
               key={link.label}
-              className={`relative flex justify-start gap-4 rounded-lg p-4 ${
+              className={` hover:bg-slate-100 hover:shadow-lg hover:shadow-neutral-400   relative flex justify-start gap-4 rounded-lg p-4 ${
                 isActive && "shadow-lg shadow-neutral-400 bg-slate-100"
               }`}
             >
@@ -37,6 +43,7 @@ function LeftSidebar() {
 
               <p className="text-slate-700 max-lg:hidden"> {link.label}</p>
             </Link>
+            </motion.div>
           );
         })}
       </div>

@@ -20,11 +20,7 @@ export const sidebarLinks = [
         route:"/explore",
         label:"Explore"
     },
-    {
-        imgUrl :"/assets/message.svg",
-        route:"/message",
-        label:"Chats"
-    },
+   
     {
         imgUrl :"/assets/profile.svg",
         route:"/profile",

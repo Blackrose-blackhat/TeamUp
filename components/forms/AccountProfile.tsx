@@ -4,7 +4,6 @@ import React, { ChangeEvent } from "react";
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -17,8 +16,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import {TagsInput} from "react-tag-input-component"
-
+import { TagsInput } from "react-tag-input-component";
 
 import * as z from "zod";
 import { useForm } from "react-hook-form";
@@ -31,29 +29,37 @@ import { isBase64Image } from "@/lib/utils";
 import { useUploadThing } from "@/lib/uploadthing";
 import { updateUser } from "@/lib/actions/user.actions";
 import { usePathname, useRouter } from "next/navigation";
-import { connectToDB } from "@/lib/mongoose";
+import { Textarea } from "../ui/textarea";
 interface Props {
   user: {
     id: string;
     objectId: string;
     username: string;
     Gender: string;
-    skills: string[];
+    skills: [];
     institutionName: string;
     institutionAddress: string;
     image: string;
     year: string;
+    instagram: string;
+    whatsapp: string;
+    linkedin: string;
+    github: string;
+    bio: string;
+    projects:string;
+    projecttitle:string;
   };
   btnTitle: string;
 }
 
 const AccountProfile = ({ user, btnTitle }: Props) => {
-  const [selected, setSelected] = useState<string[]>([]); 
+  const [selected, setSelected] = useState<string[]>([]);
 
   const [files, setfiles] = useState<File[]>([]);
   const { startUpload } = useUploadThing("media");
   const pathname = usePathname();
   const router = useRouter();
+
   const form = useForm({
     resolver: zodResolver(UserValidation),
     defaultValues: {
@@ -64,11 +70,17 @@ const AccountProfile = ({ user, btnTitle }: Props) => {
       institutionName: user?.institutionName || "",
       gender: user?.Gender || "",
       year: user?.year || "",
+      instagram: user?.instagram || "",
+      whatsapp: user?.whatsapp || "",
+      linkedin: user?.linkedin || "",
+      github: user?.github || "",
+      bio: user?.bio || "",
+      projects:user?.projects || "",
+      projecttitle : user?.projecttitle || ""
     },
   });
   const onSubmit = async (values: z.infer<typeof UserValidation>) => {
-    console.log(values.skills)
-  
+   
     const blob = values.profile_photo;
 
     const hasImageChanged = isBase64Image(blob);
@@ -87,16 +99,21 @@ const AccountProfile = ({ user, btnTitle }: Props) => {
       values.gender,
       values.skills,
       values.profile_photo,
+      values.instagram,
+      values.whatsapp,
+      values.linkedin,
+      values.github,
+      values.bio,
+      values.projects,
+      values.projecttitle,
       pathname
     );
-    
-      console.log(user?.id);
+      
     if (pathname === "/profile/edit") {
       router.back();
     } else {
       router.push("/");
     }
-    
   };
 
   const handleImageChange = async (
@@ -121,11 +138,11 @@ const AccountProfile = ({ user, btnTitle }: Props) => {
   };
 
   return (
-    <>
+    <div className="w-full  flex flex-col justify-start align-middle items-center">
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}
-          className=" flex flex-col justify-start gap-5 space-y-8"
+          className=" w-full lg:w-2/4flex flex-col justify-start gap-2 space-y-5"
         >
           <FormField
             control={form.control}
@@ -169,10 +186,8 @@ const AccountProfile = ({ user, btnTitle }: Props) => {
             control={form.control}
             name="username"
             render={({ field }) => (
-              <FormItem >
-                <FormLabel>
-                  Username
-                </FormLabel>
+              <FormItem>
+                <FormLabel>Username</FormLabel>
                 <FormControl className=" text-semibold ">
                   <input
                     type="text"
@@ -223,7 +238,6 @@ const AccountProfile = ({ user, btnTitle }: Props) => {
                   <SelectContent>
                     <SelectItem value="Male">Male</SelectItem>
                     <SelectItem value="Female">Female</SelectItem>
-                    
                   </SelectContent>
                 </Select>
                 <FormMessage />
@@ -235,16 +249,184 @@ const AccountProfile = ({ user, btnTitle }: Props) => {
             name="skills"
             render={({ field }) => (
               <FormItem>
-                <FormLabel >
-                  Skills
-                </FormLabel>
-                <FormControl >
-                <TagsInput 
-                value={selected}
-                onChange={field.onChange}
-                name="tags"
-                placeHolder="tags"
-                />
+                <FormLabel>Skills</FormLabel>
+                <FormControl>
+                  <TagsInput
+                    value={selected}
+                    onChange={field.onChange}
+                    name="tags"
+                    placeHolder="Enter your skills and press Enter"
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <div className="flex flex-col gap-3">
+            <h3 className="text-2xl font-bold text-slate-800">Projects</h3>
+            <h6 className="text-sm text-slate-500 ">Enter your most favourite project to showcase</h6>
+            <FormField
+              control={form.control}
+              name="projecttitle"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel></FormLabel>
+                  <FormControl className=" text-semibold ">
+                    <div className="items-center flex flex-row bg-white p-1 px-2 gap-4 rounded-md ">
+                      <input
+                        placeholder="Enter project title"
+                        type="text"
+                        className=" w-full focus:outline-none p-2 bg-white rounded-md text-slate-700"
+                        {...field}
+                      />
+                    </div>
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="projects"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel></FormLabel>
+                  <FormControl className=" text-semibold ">
+                    <div className="items-center flex flex-row bg-white p-1 px-2 gap-4 rounded-md ">
+                      <input
+                        placeholder="Enter your project github link or hosted link"
+                        type="text"
+                        className=" w-full focus:outline-none p-2 bg-white rounded-md text-slate-700"
+                        {...field}
+                      />
+                    </div>
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          </div>
+          <div className="flex flex-col justify-start align-middle gap-3">
+            <h3 className="text-2xl font-bold text-slate-800">Socials</h3>
+            <FormField
+              control={form.control}
+              name="instagram"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel></FormLabel>
+                  <FormControl className=" text-semibold ">
+                    <div className="items-center flex flex-row bg-white p-1 px-2 gap-4 rounded-md ">
+                      <Image
+                        src="/assets/instagram.svg"
+                        alt="instagram"
+                        height={20}
+                        width={20}
+                      />
+
+                      <input
+                        placeholder="your instagram username ||  eg:@_mushraf_parwej_"
+                        type="text"
+                        className=" w-full focus:outline-none p-2 bg-white rounded-md text-slate-700"
+                        {...field}
+                      />
+                    </div>
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="whatsapp"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel></FormLabel>
+                  <FormControl className=" text-semibold ">
+                    <div className="items-center flex flex-row bg-white p-1 px-2 gap-4 rounded-md ">
+                      <Image
+                        src="/assets/whatsapp.svg"
+                        alt="whatsapp"
+                        width={27}
+                        height={27}
+                      />
+                      <input
+                        placeholder="e.g +91-XXXXXXXXXX"
+                        type="text"
+                        className=" w-full focus:outline-none p-2 bg-white rounded-md text-slate-700"
+                        {...field}
+                      />
+                    </div>
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="linkedin"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel></FormLabel>
+                  <FormControl className=" text-semibold ">
+                    <div className="items-center flex flex-row bg-white p-1 px-2 gap-4 rounded-md ">
+                      <Image
+                        src="/assets/linkedin.svg"
+                        alt="linkedin"
+                        width={27}
+                        height={27}
+                      />
+                      <input
+                        placeholder="paste your linkedin url    e.g.: https://linkedin/com/musharaf-parwez"
+                        type="text"
+                        className=" w-full focus:outline-none p-2 bg-white rounded-md text-slate-700"
+                        {...field}
+                      />
+                    </div>
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="github"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel></FormLabel>
+                  <FormControl className=" text-semibold ">
+                    <div className="items-center flex flex-row bg-white p-1 px-2 gap-4 rounded-md ">
+                      <Image
+                        src="/assets/github.svg"
+                        alt="github"
+                        width={27}
+                        height={27}
+                      />
+                      <input
+                        placeholder="paste your github username  e.g blackrose-blackhat"
+                        type="text"
+                        className=" w-full focus:outline-none p-2 bg-white rounded-md text-slate-700"
+                        {...field}
+                      />
+                    </div>
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          </div>
+
+          <FormField
+            control={form.control}
+            name="bio"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Bio</FormLabel>
+                <FormControl className=" text-semibold ">
+                  <Textarea
+                    placeholder="Few words about you!"
+                    className=" w-full focus:outline-none p-2 bg-white rounded-md text-slate-700"
+                    {...field}
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -254,11 +436,9 @@ const AccountProfile = ({ user, btnTitle }: Props) => {
           <Button className="bg-[#4452BD] hover:bg-blue-600   " type="submit">
             {btnTitle}
           </Button>
-          
         </form>
       </Form>
-      
-    </>
+    </div>
   );
 };
 export default AccountProfile;
