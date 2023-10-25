@@ -38,3 +38,8 @@ export const excerpt = (str :string, count:number) => {
   return str;
 };
 
+export const mapArrayToSixWithFourMore = (array: any[]): any[] => {
+  const firstSixComponents = array.slice(0, 6);
+  const remainingComponents = array.slice(6);
+  return [...firstSixComponents, `+${remainingComponents.length} more`];
+};

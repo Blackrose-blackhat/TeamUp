@@ -42,7 +42,7 @@ const UserCard = ({ id, username, imgUrl, skills, personType,bio }: Props) => {
         </div>
         <div className="items-end align-baseline px-4 py-1 md:py-3   w-full hover:opacity-95">
           <Link href={`/profile/${id}`}>
-            <Button className="w-full  bg-[#104f8f] hover:bg-[#3871ab] ">View</Button>
+            <Button className="w-full hover:text-white  hover:bg-[#104f8f] text-[#104f8f] bg-transparent border-2 border-[#104f8f] ">View</Button>
           </Link>
         </div>
       </div>

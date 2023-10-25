@@ -91,7 +91,7 @@ const ProfileHeader = ({
             <p className="mx-2 p-2 text-md  text-slate-700 font-semibold">
               {projecttitle}
             </p>
-            <Link href={`${projects}`}>
+            <Link target="_blank" href={`${projects}`}>
               <div className="text-blue-700 font-bold hover:scale-105 delay-75">
                 <LinkIcon />
               </div>
@@ -106,7 +106,7 @@ const ProfileHeader = ({
         <h1 className="font-bold text-2xl text-slate-700">Socials</h1>
         <div className="flex flex-wrap gap-5">
           {instagram !== "" && (
-            <Link href={`https://www.instagram.com/${instagram}`}>
+            <Link target="_blank" href={`https://www.instagram.com/${instagram}`}>
               <div className="flex flex-row gap-3">
                 <Image
                   src="/assets/instagram.svg"
@@ -133,7 +133,7 @@ const ProfileHeader = ({
           )}
 
           {linkedin !== "" && (
-            <Link href={linkedin}>
+            <Link target="_blank" href={linkedin}>
               <div className="flex flex-row gap-3">
                 <Image
                   src="/assets/linkedin.svg"
@@ -146,7 +146,7 @@ const ProfileHeader = ({
             </Link>
           )}
           {github !== "" && (
-            <Link href={`https://www.github.com/${github}`}>
+            <Link target="_blank" href={`https://www.github.com/${github}`}>
               <div className="flex flex-row gap-3">
                 <Image
                   src="/assets/github.svg"

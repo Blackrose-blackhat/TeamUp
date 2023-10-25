@@ -13,7 +13,7 @@ const GigsTab = async ({ currentUserId, accountId, accountType }: Props) => {
   let result = await fetchUserPosts(accountId);
   if (!result) redirect("/");
   return (
-    <section className="mt-9 flex flex-col gap-10">
+    <section className="mt-9 flex flex-col gap-10 w-full">
       {result.gigs.map((gigs: any) => (
         <GigsCard
           key={gigs._id}

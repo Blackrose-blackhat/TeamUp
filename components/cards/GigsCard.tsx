@@ -30,9 +30,9 @@ const GigsCard = ({
 }: Props) => {
   
   return (
-    <article className=" justify-between flex flex-row delay-100 transition bg-slate-100 shadow-xl shadow-slate-500 rounded-xl p-4 lg:p-8">
+    <article className=" justify-between flex flex-row delay-100 transition bg-white shadow-lg shadow-slate-500 rounded-xl p-4 lg:p-8">
 
-      <Link href={`/gigs/${id}`}>
+      <Link className="w-full" href={`/gigs/${id}`}>
         <div className="flex flex-1 flex-row gap-7">
           
           <div className="flex flex-col items-center">
@@ -44,10 +44,7 @@ const GigsCard = ({
                 className="cursor-pointer rounded-full"
               />
             </Link>
-            {/* {author.id === currentUserId && (
-              <button >Delete</button>
-            )}
-            */}
+            
           </div>
 
           <div className="flex w-full flex-col">
@@ -70,11 +67,12 @@ const GigsCard = ({
        
         
         {tags && (
-          <div className=" p-3 gap-5 mt-5 rounded-md w-fit flex flex-row">
+          <div className=" p-3 gap-5 mt-5 rounded-md w-fit flex flex-wrap">
+            
             {tags.map((idx) => (
               <div
                
-                className=" rounded-lg cursor-pointer delay-105 text-white hover:scale-105 font-semibold bg-[#104f8f] hover:bg-[#3871ab] p-3 px-8  capitalize "
+                className=" rounded-md cursor-pointer delay-105  hover:scale-105 font-semibold border-2 border-[#104f8f] text-[#104f8f] hover:text-white hover:bg-[#104f8f] p-3 px-8  capitalize "
               >
                 {idx}
               </div>
@@ -83,7 +81,7 @@ const GigsCard = ({
         )}
         
       </Link>
-      <div  className=" mx-2 w-fit hover:scale-105 delay-75 transition ">
+      <div  className=" mx-2 w-fit  ">
       {author.id == currentUserId&& (
           <DeleteButton authorId={id} />
         ) }

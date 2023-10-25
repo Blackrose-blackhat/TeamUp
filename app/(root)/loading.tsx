@@ -1,12 +1,12 @@
 "use client"
 import { Skeleton } from "@/components/ui/skeleton"
 import { motion } from "framer-motion"
-
+import {PropagateLoader} from "react-spinners"
 const Loading = () => {
   return (
-    <motion.div className="flex p-10 items-center space-x-4">
+    <motion.div className="flex flex-row justify-center items-start h-screen w-full">
       
-      <motion.h5>Loading</motion.h5>
+      <PropagateLoader color="#36d7b7" />
     </motion.div>
 
 

@@ -64,7 +64,7 @@ const page = async ({ params }: { params: { id: string } }) => {
         
         
       </div>
-      <div className="flex flex-row items-center gap-5">
+      <div className="flex flex-row items-center gap-5 w-full">
         <GigsTab
           currentUserId={user.id}
           accountId={userInfo.id}
