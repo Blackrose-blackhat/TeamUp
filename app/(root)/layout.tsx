@@ -1,12 +1,15 @@
 import { ClerkProvider } from "@clerk/nextjs";
 import "../globals.css";
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Montserrat } from "next/font/google";
 import Bottombar from "@/components/shared/BottomSideBar";
 import LeftSidebar from "@/components/shared/LeftSideBar";
 import Topbar from "@/components/shared/Topbar";
 import RightSideBar from "@/components/shared/RightSidebar";
-const inter = Inter({ subsets: ["latin"] });
+const inter = Montserrat({
+  subsets: ["latin"],
+  
+});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -21,12 +24,12 @@ export default function RootLayout({
   return (
     <ClerkProvider>
       <html lang="en">
-        <body className={`${inter.className} bg-stone-200  `}>
+        <body className={`${inter.className} bg-blue-100  `}>
           <Topbar />
           <main className="flex flex-row justify-between scroll-smooth  ">
             <LeftSidebar />
             <section className="main-container w-full  ">
-              <div className="  overflow-hidden w-full mx-w-4xl p-5">{children}</div>
+              <div className="  overflow-hidden w-full mx-w-4xl ">{children}</div>
             </section>
             <div className="p-9 py-20 hidden lg:block">
             <RightSideBar />

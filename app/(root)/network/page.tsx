@@ -11,7 +11,7 @@ const page = async () => {
   const userInfo = await fetchUser(user.id);
   if (!userInfo?.onboarded) redirect("/onboarding");
 
-  // fetch users
+
 
   const result = await fetchUsers({
     userId: user.id,
@@ -19,8 +19,9 @@ const page = async () => {
     pageNumber: 1,
     pageSize: 25,
     skills: [],
+    bio:""
   });
-  console.log(result.users)
+
   return (
     <section className="w-full flex flex-col  px-5 ">
       <h1 className="font-bold text-3xl px-3 text-slate-800">Users</h1>
@@ -29,7 +30,7 @@ const page = async () => {
         {result.users.length === 0 ? (
           <p>No User found</p>
         ) : (
-          <div className="flex flex-wrap w-full gap-6 mt-5 ">
+          <div className="grid grid-cols-1 lg:grid-cols-4 w-full gap-2 mt-2 bg-white rounded-md  p-5 ">
             {result.users.map((person) => (
               <UserCard
                 key={person.id}
@@ -38,6 +39,7 @@ const page = async () => {
                 imgUrl={person.image}
                 skills={person.skills}
                 personType="User"
+                bio={person.bio}
               />
             ))}
           </div>

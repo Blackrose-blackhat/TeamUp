@@ -74,4 +74,12 @@ export async function fetchGigsById(id: string) {
   }
 }
 
-
+export async function deleteGigsById(id:string) {
+  try{
+    await connectToDB();
+    await Gigs.findByIdAndDelete(id);
+  }
+  catch(error:any) {
+    console.error(error.message);
+  }
+}

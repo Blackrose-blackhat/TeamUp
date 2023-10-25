@@ -103,14 +103,17 @@ export async function fetchUsers ({
   pageNumber = 1,
   pageSize = 20,
   sortBy="desc",
-  skills=[]
+  skills=[],
+  bio=""
+
 }:{
   userId:string;
   searchString:string;
   pageNumber : number;
   pageSize : number;
   sortBy?:SortOrder,
-  skills:[]
+  skills:[],
+  bio:string,
 })
 {
   try {
@@ -134,6 +137,9 @@ export async function fetchUsers ({
         },
         {
           skills:{$regex:regex}
+        },
+        {
+          bio:{$regex:regex}
         }
       ]
     }

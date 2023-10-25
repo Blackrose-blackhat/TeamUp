@@ -1,7 +1,9 @@
 
+import { deleteGigsById } from "@/lib/actions/Gigs.action";
 import Gigs from "@/lib/models/gig.models";
 import { excerpt, formatDateString } from "@/lib/utils";
-
+import { currentUser } from "@clerk/nextjs";
+import DeleteButton from "../ui/delete_button";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -26,10 +28,13 @@ const GigsCard = ({
   tags,
   createdAt,
 }: Props) => {
+  
   return (
-    <article className=" delay-100 transition bg-slate-100 shadow-lg shadow-slate-500 rounded-md p-4 lg:p-8">
+    <article className=" justify-between flex flex-row delay-100 transition bg-slate-100 shadow-xl shadow-slate-500 rounded-xl p-4 lg:p-8">
+
       <Link href={`/gigs/${id}`}>
         <div className="flex flex-1 flex-row gap-7">
+          
           <div className="flex flex-col items-center">
             <Link href={`/profile/${author.id}`} className="relative h-11 w-11">
               <Image
@@ -44,6 +49,7 @@ const GigsCard = ({
             )}
             */}
           </div>
+
           <div className="flex w-full flex-col">
             <Link href={`/profile/${author.id}`} className="w-fit">
               <h4 className=" capitalize cursor-pointer text-base font-semibold">
@@ -61,6 +67,8 @@ const GigsCard = ({
             </p>
           </div>
         </div>
+       
+        
         {tags && (
           <div className=" p-3 gap-5 mt-5 rounded-md w-fit flex flex-row">
             {tags.map((idx) => (
@@ -73,7 +81,14 @@ const GigsCard = ({
             ))}
           </div>
         )}
+        
       </Link>
+      <div  className=" mx-2 w-fit hover:scale-105 delay-75 transition ">
+      {author.id == currentUserId&& (
+          <DeleteButton authorId={id} />
+        ) }
+      </div>
+     
     </article>
   );
 };

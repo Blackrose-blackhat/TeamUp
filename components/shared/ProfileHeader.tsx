@@ -36,7 +36,7 @@ const ProfileHeader = ({
   const container = {
     
   }
-  console.log(instagram);
+  
   return (
     <div className="flex flex-col w-full justify-start">
       <div className="flex items-center justify-between">

@@ -11,8 +11,8 @@ function LeftSidebar() {
   const pathName = usePathname();
   const {userId} = useAuth();
   return (
-    <section className="sticky left-0 top-0 z-20 flex h-screen w-fit flex-col justify-between overflow-auto   pb-5 pt-28 max-md:hidden">
-      <div className="flex w-full flex-1 flex-col gap-10  px-6 ">
+    <section className=" bg-white sticky left-0 top-0 z-20 flex h-screen w-fit flex-col justify-between overflow-auto   pb-5 pt-28 max-md:hidden">
+      <div className=" flex w-full flex-1 flex-col gap-10  px-6 ">
         {sidebarLinks.map((link) => {
           const isActive =
             (pathName.includes(link.route) && link.route.length > 1) ||
@@ -30,8 +30,8 @@ function LeftSidebar() {
             <Link
               href={link.route}
               key={link.label}
-              className={` hover:bg-slate-100 hover:shadow-lg hover:shadow-neutral-400   relative flex justify-start gap-4 rounded-lg p-4 ${
-                isActive && "shadow-lg shadow-neutral-400 bg-slate-100"
+              className={` hover:bg-[#2E9BE6] hover:text-white hover:shadow-lg hover:shadow-neutral-400   relative flex justify-start gap-4 rounded-lg p-4 ${
+                isActive && "shadow-lg shadow-neutral-400 bg-[#2E9BE6] text-white"
               }`}
             >
               <Image
@@ -41,7 +41,7 @@ function LeftSidebar() {
                 height={24}
               />
 
-              <p className="text-slate-700 max-lg:hidden"> {link.label}</p>
+              <p className="text-slate-700  max-lg:hidden font-semibold"> {link.label}</p>
             </Link>
             </motion.div>
           );
@@ -58,7 +58,7 @@ function LeftSidebar() {
                 width={24}
                 height={24}
               />
-              <p className="max-lg:hidden ">Logout</p>
+              <p className="max-lg:hidden font-semibold ">Logout</p>
             </div>
           </SignOutButton>
         </SignedIn>

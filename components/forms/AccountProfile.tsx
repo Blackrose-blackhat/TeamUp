@@ -111,6 +111,7 @@ const AccountProfile = ({ user, btnTitle }: Props) => {
       
     if (pathname === "/profile/edit") {
       router.back();
+      router.refresh();
     } else {
       router.push("/");
     }
@@ -425,6 +426,7 @@ const AccountProfile = ({ user, btnTitle }: Props) => {
                   <Textarea
                     placeholder="Few words about you!"
                     className=" w-full focus:outline-none p-2 bg-white rounded-md text-slate-700"
+                    required
                     {...field}
                   />
                 </FormControl>
