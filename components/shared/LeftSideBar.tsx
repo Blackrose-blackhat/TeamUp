@@ -51,7 +51,7 @@ function LeftSidebar() {
       <div className="mt-10 px-6">
         <SignedIn>
           <SignOutButton signOutCallback={()=> router.push('/sign-in')}>
-            <div className="flex cursor-pointer gap-4 p-4">
+            <motion.div whileTap={{scale:0.5}} whileHover={{scale:1.1}} className="flex cursor-pointer gap-4 p-4">
               <Image
                 src="/assets/logout.svg"
                 alt="logout"
@@ -59,7 +59,7 @@ function LeftSidebar() {
                 height={24}
               />
               <p className="max-lg:hidden font-semibold ">Logout</p>
-            </div>
+            </motion.div>
           </SignOutButton>
         </SignedIn>
       </div>

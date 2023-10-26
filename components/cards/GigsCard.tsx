@@ -53,7 +53,7 @@ const GigsCard = ({
                 {author.username}
               </h4>
             </Link>
-            <p className="text-slate-500 font-semibold">
+            <p className="text-slate-600 font-normal text-sm">
               {formatDateString(createdAt)}
             </p>
             <p className=" hidden lg:block w-fit mt-2 text-regular py-5 text-lg text-slate-900 font-semibold">
@@ -67,12 +67,12 @@ const GigsCard = ({
        
         
         {tags && (
-          <div className=" p-3 gap-5 mt-5 rounded-md w-fit flex flex-wrap">
+          <div className=" p-1 md:p-3 gap-5 mt-5 rounded-md w-fit flex flex-wrap">
             
             {tags.map((idx) => (
               <div
                
-                className=" rounded-md cursor-pointer delay-105  hover:scale-105 font-semibold border-2 border-[#104f8f] text-[#104f8f] hover:text-white hover:bg-[#104f8f] p-3 px-8  capitalize "
+                className=" rounded-md cursor-pointer delay-105  hover:scale-105 font-semibold border-2 border-[#104f8f] text-[#104f8f] hover:text-white hover:bg-[#104f8f] p-1 md:p-3 px-1 md:px-4 text-sm m capitalize "
               >
                 {idx}
               </div>
@@ -83,7 +83,7 @@ const GigsCard = ({
       </Link>
       <div  className=" mx-2 w-fit  ">
       {author.id == currentUserId&& (
-          <DeleteButton authorId={id} />
+          <DeleteButton  authorId={id} />
         ) }
       </div>
      

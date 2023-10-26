@@ -33,18 +33,13 @@ const ProfileHeader = ({
   projects,
   projecttitle,
 }: Props) => {
-  const container = {
-    
-  }
-  
+  const container = {};
+
   return (
     <div className="flex flex-col w-full justify-start">
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-3">
-          <div
-            
-            className="relative h-20 w-20 object-cover"
-          >
+          <div className="relative h-20 w-20 object-cover">
             <Image
               src={imgUrl}
               alt="profile Image"
@@ -59,33 +54,30 @@ const ProfileHeader = ({
           </div>
         </div>
       </div>
-      <div className=" px-5 mt-5 flex-row flex justify-start items-center  ">
-        <h4 className="font-semibold text-lg">Gender:</h4>
-        <h3 className=" px-3 text-slate-500 text-lg ">{gender}</h3>
+      <div className="flex flex-col justify-start mt-5">
+        <div className=" px-5 mt-5 flex-row flex justify-start items-center  ">
+          <h4 className="text-slate-800 font-semibold text-lg">Gender:</h4>
+          <h3 className=" px-3 text-slate-500 text-lg ">{gender}</h3>
+        </div>
+        <div className=" px-5 mt-5 flex-row flex justify-start items-center  ">
+          <h4 className="text-slate-800 font-semibold text-lg">Year:</h4>
+          <h3 className=" px-3 text-slate-500 text-lg capitalize ">{year}</h3>
+        </div>
+        <div className="mx-5 mt-5 flex flex-row items-start gap-3">
+          <p className=" text-slate-800 font-semibold text-lg ">Bio:</p>
+          <p className="  capitalize  rounded-sm text-slate-500">{bio}</p>
+        </div>
       </div>
-      <div className=" px-5 mt-5 flex-row flex justify-start items-center  ">
-        <h4 className="font-semibold text-lg">Year:</h4>
-        <h3 className=" px-3 text-slate-500 text-lg capitalize ">{year}</h3>
-      </div>
-      <div className="mx-5 mt-5 flex flex-row items-center gap-3">
-        <p className="font-bold text-lg ">Bio:</p>
-        <p className="  capitalize  rounded-sm text-slate-500">{bio}</p>
-      </div>
-      <div></div>
-      <motion.div
-        
-       
-        className=" px-5 w-full flex flex-wrap gap-5 lg:gap-10 py-10"
-      >
+      <motion.div className=" px-5 w-full flex flex-wrap gap-5 lg:gap-10 py-10">
         {skills.map((idx) => (
-          <h1 className="bg-white p-2 w-fit font-semibold font-mono text-slate-800 rounded-md">
+          <h1 className="rounded-md  delay-105  hover:scale-105 font-semibold border-2 border-[#104f8f] text-[#104f8f] hover:text-white hover:bg-[#104f8f] p-1 md:p-3 px-1 md:px-4 text-sm m capitalize">
             {idx}
           </h1>
         ))}
       </motion.div>
       {projects != "" && (
         <div className="py-4 flex flex-col gap-4">
-          <h1 className="text-2xl font-bold text-slate-700">Projects</h1>
+          <h1 className="text-2xl font-bold text-slate-700">Project</h1>
 
           <div className="flex flex-row gap-2 items-center">
             <p className="mx-2 p-2 text-md  text-slate-700 font-semibold">
@@ -106,7 +98,10 @@ const ProfileHeader = ({
         <h1 className="font-bold text-2xl text-slate-700">Socials</h1>
         <div className="flex flex-wrap gap-5">
           {instagram !== "" && (
-            <Link target="_blank" href={`https://www.instagram.com/${instagram}`}>
+            <Link
+              target="_blank"
+              href={`https://www.instagram.com/${instagram}`}
+            >
               <div className="flex flex-row gap-3">
                 <Image
                   src="/assets/instagram.svg"
