@@ -1,33 +1,38 @@
 "use client";
 import { deleteGigsById } from "@/lib/actions/Gigs.action";
-import { ClipLoader, FadeLoader } from "react-spinners";
+
 
 import Image from "next/image";
-
+import { usePathname } from "next/navigation";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
-import { toast } from "./use-toast";
+
 import { motion } from "framer-motion";
 interface props {
   authorId: string;
 }
 const DeleteButton = ({ authorId }: props) => {
-  const [isLoading, setIsLoading] = useState<boolean>(false);
 
+  const pathName = usePathname();
   const router = useRouter();
   const handleDelete = async (authorId: any) => {
     try {
-      setIsLoading(true)
-      await deleteGigsById(authorId);
       
-      router.refresh();
+      await deleteGigsById(authorId);
+      if(pathName == "/")
+      {
+        router.refresh();
+      }
+      else{
+        router.back();
+      }
+      
       
     } catch (error) {}
   };
 
   return (
   <div>
-    {isLoading ? (<ClipLoader color="#36d7b7" />) : (
+    
   <motion.button 
   whileHover={{
     scale:1.1,
@@ -39,7 +44,7 @@ const DeleteButton = ({ authorId }: props) => {
     <Image src="/assets/delete.svg" alt='delete' width={30} height={30} />
    
   </motion.button>
-)}
+
   </div>);
 };
 

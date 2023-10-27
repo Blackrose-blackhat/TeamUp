@@ -20,8 +20,6 @@ export default function RootLayout({
             <div className="flex flex-col h-screen items-center justify-center ">
             <PropagateLoader color="#36d7b7" />
             </div>
-          
-
           </ClerkLoading>
           <ClerkLoaded>{children}</ClerkLoaded>
         </body>

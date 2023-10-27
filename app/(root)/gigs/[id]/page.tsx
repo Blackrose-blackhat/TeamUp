@@ -7,7 +7,7 @@ import { currentUser } from "@clerk/nextjs";
 import { MessagesSquare, PersonStandingIcon } from "lucide-react";
 import Link from "next/link";
 import { redirect } from "next/navigation";
-
+import { excerpt } from "@/lib/utils";
 const page = async ({ params }: { params: { id: string } }) => {
   if (!params.id) return null;
 

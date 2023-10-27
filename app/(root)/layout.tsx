@@ -1,3 +1,4 @@
+
 import { ClerkProvider } from "@clerk/nextjs";
 import "../globals.css";
 import type { Metadata } from "next";
@@ -24,14 +25,14 @@ export default function RootLayout({
   return (
     <ClerkProvider>
       <html lang="en">
-        <body className={`${inter.className} bg-blue-100  `}>
+        <body className={`${inter.className} bg-slate-100  `}>
           <Topbar />
           <main className="flex flex-row justify-between scroll-smooth  ">
             <LeftSidebar />
             <section className="main-container w-full  ">
               <div className="  overflow-hidden w-full mx-w-4xl ">{children}</div>
             </section>
-            <div className="p-9 py-20 hidden lg:block">
+            <div className=" hidden lg:block">
             <RightSideBar />
             </div>
               

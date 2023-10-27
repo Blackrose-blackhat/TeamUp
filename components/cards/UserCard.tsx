@@ -11,12 +11,12 @@ interface Props {
   personType: string;
   bio:string;
 }
-const UserCard = ({ id, username, imgUrl, skills, personType,bio }: Props) => {
+const UserCard = ({ id, username, imgUrl,bio }: Props) => {
  
 
   return (
-    <article className=" lg:w-full shadow-md shadow-slate-400 h-96 flex flex-col justify-center items-center ">
-      <div className=" bg-transparent md:h-64 h-cover   rounded-md  w-full lg:w-full align-middle items-center   justify-between  p-2 flex flex-col">
+    <article className=" lg:w-full bg-white shadow-md shadow-slate-400   flex flex-col justify-center items-center align-middle ">
+      <div className="      rounded-md  w-full lg:w-full align-middle items-center   justify-between  p-2 flex flex-col">
         <div className=" items-center gap-5 flex flex-col  justify-start w-full">
           <div className=" -mt-5 relative h-[5rem] w-[5rem] md:w-[6rem] md:h-[6rem] object-cover">
             <Image

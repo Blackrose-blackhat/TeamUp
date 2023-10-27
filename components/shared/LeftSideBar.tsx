@@ -11,7 +11,7 @@ function LeftSidebar() {
   const pathName = usePathname();
   const {userId} = useAuth();
   return (
-    <section className=" bg-white sticky left-0 top-0 z-20 flex h-screen w-fit flex-col justify-between overflow-auto   pb-5 pt-28 max-md:hidden">
+    <section className=" sidebar sticky left-0 top-1 z-20 flex h-screen w-fit flex-col justify-between overflow-auto   pb-5 pt-28 max-md:hidden">
       <div className=" flex w-full flex-1 flex-col gap-10  px-6 ">
         {sidebarLinks.map((link) => {
           const isActive =
@@ -25,13 +25,13 @@ function LeftSidebar() {
             <motion.div
             layout
             whileHover={{scale:1.1}}
-            
+            whileTap={{scale:0.5}}
             >
             <Link
               href={link.route}
               key={link.label}
-              className={` hover:bg-[#2E9BE6] hover:text-white hover:shadow-lg hover:shadow-neutral-400   relative flex justify-start gap-4 rounded-lg p-4 ${
-                isActive && "shadow-lg shadow-neutral-400 bg-[#2E9BE6] text-white"
+              className={` opacity-70  text-white font-semibold hover:bg-[#ffffff4b]      relative flex justify-start gap-4 rounded-lg p-4 ${
+                isActive && " opacity-100 bg-[#ffffff4b] "
               }`}
             >
               <Image
@@ -39,9 +39,10 @@ function LeftSidebar() {
                 alt={link.label}
                 width={24}
                 height={24}
+                className="fill-white"
               />
 
-              <p className="text-slate-700  max-lg:hidden font-semibold"> {link.label}</p>
+              {link.label}
             </Link>
             </motion.div>
           );
@@ -58,7 +59,7 @@ function LeftSidebar() {
                 width={24}
                 height={24}
               />
-              <p className="max-lg:hidden font-semibold ">Logout</p>
+              <p className="max-lg:hidden  text-white font-semibold ">Logout</p>
             </motion.div>
           </SignOutButton>
         </SignedIn>

@@ -30,7 +30,7 @@ const page = async () => {
         {result.users.length === 0 ? (
           <p>No User found</p>
         ) : (
-          <div className="grid grid-cols-1 lg:grid-cols-4 w-full gap-2 mt-2 bg-white rounded-md  p-5 ">
+          <div className=" grid grid-cols-1 lg:grid-cols-4 w-full gap-3 space-y-4 lg:space-y-0 mt-2 rounded-md  p-5 ">
             {result.users.map((person) => (
               <UserCard
                 key={person.id}
