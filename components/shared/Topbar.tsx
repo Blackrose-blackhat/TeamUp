@@ -12,6 +12,17 @@ function Topbar() {
         <Image src="/logo.svg" alt={"logo"} width={120} height={120} />
       </Link>
       <div className="flex items-center gap-1">
+        <div className="flex flex-row gap-10">
+          <div className="flex flex-row gap-1 items-center">
+          <Image src="/assets/message.svg" alt="contact-us" width={26} height={26} />
+          <p className="font-semibold text-blue-500">Contact us</p>
+          </div>
+          <div className="flex flex-row gap-1 items-center">
+          <Image src="/assets/about.svg" alt="about-us" width={26} height={26} />
+          <p className="font-semibold text-blue-500">About </p>
+          </div>
+          
+        </div>
         <div className="block md:hidden">
           <SignedIn>
             <SignOutButton>

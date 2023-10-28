@@ -1,4 +1,3 @@
-
 import { ClerkProvider } from "@clerk/nextjs";
 import "../globals.css";
 import type { Metadata } from "next";
@@ -7,9 +6,9 @@ import Bottombar from "@/components/shared/BottomSideBar";
 import LeftSidebar from "@/components/shared/LeftSideBar";
 import Topbar from "@/components/shared/Topbar";
 import RightSideBar from "@/components/shared/RightSidebar";
+import Footer from "@/components/shared/Footer";
 const inter = Montserrat({
   subsets: ["latin"],
-  
 });
 
 export const metadata: Metadata = {
@@ -27,17 +26,24 @@ export default function RootLayout({
       <html lang="en">
         <body className={`${inter.className} bg-slate-100  `}>
           <Topbar />
-          <main className="flex flex-row justify-between scroll-smooth  ">
+          <main className="flex flex-row justify-between scroll-smooth w-full ">
             <LeftSidebar />
-            <section className="main-container w-full  ">
-              <div className="  overflow-hidden w-full mx-w-4xl ">{children}</div>
-            </section>
-            <div className=" hidden lg:block">
-            <RightSideBar />
+            <div className="w-full">
+              <section className="main-container w-full  ">
+                <div className="  overflow-hidden w-full mx-w-4xl ">
+                  {children}
+                </div>
+              </section>
+              <div className="footer -z-10">
+                <Footer />
+              </div>
             </div>
-              
-            
+
+            <div className=" hidden lg:block">
+              <RightSideBar />
+            </div>
           </main>
+
           <Bottombar />
         </body>
       </html>

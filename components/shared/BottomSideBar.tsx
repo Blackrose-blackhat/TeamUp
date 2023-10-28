@@ -9,7 +9,7 @@ function Bottombar()
     const router = useRouter();
     const pathName = usePathname();
     return(
-        <section className="fixed bottom-0 z-10 w-full rounded-t-3xl bg-slate-200 p-4  xs:px-7 md:hidden">
+        <section className="fixed bottom-0 z-10 w-full  sidebar p-4  xs:px-7 md:hidden">
         <div className="flex items-center justify-between gap-3 xs:gap-5">
         {sidebarLinks.map((link) => {
           const isActive =
@@ -19,8 +19,8 @@ function Bottombar()
             <Link
               href={link.route}
               key={link.label}
-              className={`relative flex justify-start gap-4 rounded-lg p-4 ${
-                isActive && "shadow-lg shadow-neutral-400 bg-[#d9cede]"
+              className={` opacity-70  text-white font-semibold hover:bg-[#ffffff4b]      relative flex justify-start gap-4 rounded-lg p-4  ${
+                isActive && "opacity-100 bg-[#ffffff4b]"
               }`}
             >
               <Image

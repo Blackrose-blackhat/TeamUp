@@ -11,8 +11,8 @@ function LeftSidebar() {
   const pathName = usePathname();
   const {userId} = useAuth();
   return (
-    <section className=" sidebar sticky left-0 top-1 z-20 flex h-screen w-fit flex-col justify-between overflow-auto   pb-5 pt-28 max-md:hidden">
-      <div className=" flex w-full flex-1 flex-col gap-10  px-6 ">
+    <section className=" sidebar sticky left-0 top-1 z-20 flex h-screen w-[13%] flex-col justify-between overflow-auto  pb-5 pt-28 max-md:hidden">
+      <div className=" flex w-full flex-1 flex-col gap-10   ">
         {sidebarLinks.map((link) => {
           const isActive =
             (pathName.includes(link.route) && link.route.length > 1) ||
@@ -30,7 +30,7 @@ function LeftSidebar() {
             <Link
               href={link.route}
               key={link.label}
-              className={` opacity-70  text-white font-semibold hover:bg-[#ffffff4b]      relative flex justify-start gap-4 rounded-lg p-4 ${
+              className={` opacity-70  text-white font-semibold hover:bg-[#ffffff4b]     justify-center  relative flex lg:justify-start gap-4 rounded-lg p-4 ${
                 isActive && " opacity-100 bg-[#ffffff4b] "
               }`}
             >
@@ -42,7 +42,7 @@ function LeftSidebar() {
                 className="fill-white"
               />
 
-              {link.label}
+              <p className="hidden lg:block">{link.label}</p>
             </Link>
             </motion.div>
           );
