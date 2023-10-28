@@ -31,7 +31,7 @@ export async function createGig({ text, author, path, tags }: Params) {
   }
 }
 
-export async function fetchPosts({ pageNumber = 1, pageSize = 20 }) {
+export async function fetchPosts( pageNumber = 1, pageSize = 20 ) {
   await connectToDB();
 
   const skipAmount = (pageNumber - 1) * pageSize;
