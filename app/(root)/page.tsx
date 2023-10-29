@@ -15,7 +15,7 @@ export default async function Home()  {
     <>
      
 
-      <section className=" rounded-md flex flex-col gap-10  md:p-16 p-4">
+      <section className=" h-screen rounded-md flex flex-col gap-10  md:p-16 p-4">
         {result.posts.length === 0 ? (
           <p>No Gigs Found</p>
         ) : (

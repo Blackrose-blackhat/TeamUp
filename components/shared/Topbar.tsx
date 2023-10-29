@@ -1,6 +1,7 @@
 "use client";
 import { SignOutButton, SignedIn } from "@clerk/nextjs";
 import { motion } from "framer-motion";
+import { LogOutIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -12,7 +13,7 @@ function Topbar() {
         <Image src="/logo.svg" alt={"logo"} width={120} height={120} />
       </Link>
       <div className="flex items-center gap-1">
-        <div className="flex flex-row gap-10">
+        <div className=" lg:flex-row lg:gap-10 hidden lg:flex">
           <div className="flex flex-row gap-1 items-center">
           <Image src="/assets/message.svg" alt="contact-us" width={26} height={26} />
           <p className="font-semibold text-blue-500">Contact us</p>
@@ -27,12 +28,7 @@ function Topbar() {
           <SignedIn>
             <SignOutButton>
               <div className="flex cursor-pointer">
-                <Image
-                  src="/assets/logout.svg"
-                  alt="logout"
-                  width={24}
-                  height={24}
-                />
+                <LogOutIcon />
               </div>
             </SignOutButton>
           </SignedIn>

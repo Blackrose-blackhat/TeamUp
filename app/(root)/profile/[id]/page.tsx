@@ -23,7 +23,7 @@ const page = async ({ params }: { params: { id: string } }) => {
   
   return (
     <section>
-      <div className="w-full flex flex-row items-start">
+      <div className="w-full flex flex-row items-start p-5 ">
       <ProfileHeader
           accountId={userInfo.id}
           authUserId={user.id}

@@ -16,10 +16,10 @@ async function Page()
         redirect('/onboarding');
 
     return(
-      <>
+      <div className="p-8">
         <h1 className="font-bold text-3xl text-slate-600">Create Gig</h1>
         <PostGigs userId={userInfo._id} />
-      </>
+        </div>
     ) 
     
 }

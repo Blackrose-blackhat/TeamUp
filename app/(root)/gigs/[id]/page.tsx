@@ -25,7 +25,7 @@ const page = async ({ params }: { params: { id: string } }) => {
   return (
     
     <section className="relative">
-      <div className=" gap-5 flex flex-col align-middle justify-center py-20">
+      <div className=" gap-5 flex flex-col align-middle justify-between pt-20">
         <GigsCard
           key={post._id}
           id={post._id}
