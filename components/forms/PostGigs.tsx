@@ -9,26 +9,18 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
+
 
 import * as z from "zod";
 import { useForm } from "react-hook-form";
 import { GigValidation } from "@/lib/validations/gig";
 import { zodResolver } from "@hookform/resolvers/zod";
-
 import { Button } from "../ui/button";
-import Image from "next/image";
 import { TagsInput } from "react-tag-input-component";
 import { usePathname, useRouter } from "next/navigation";
-import { connectToDB } from "@/lib/mongoose";
 import { Textarea } from "../ui/textarea";
 import { createGig } from "@/lib/actions/Gigs.action";
+import { ClipLoader, FadeLoader } from "react-spinners";
 interface Props {
   user: {
     id: string;
@@ -46,6 +38,7 @@ interface Props {
 
 function PostGigs({ userId }: { userId: string }) {
   const [selected, setSelected] = useState<string[]>([]);
+  const [isloading,setisLoading] = useState<boolean>();
   const pathname = usePathname();
   const router = useRouter();
   const form = useForm({
@@ -58,12 +51,15 @@ function PostGigs({ userId }: { userId: string }) {
   });
 
   const onSubmit = async (values: z.infer<typeof GigValidation>) => {
+
+    setisLoading(true);
     await createGig({
       text: values.gigs,
       author:userId,
       path:pathname,
       tags:values.requirement,
     });
+    setisLoading(false);
     router.push("/")
   };
   return (
@@ -113,7 +109,8 @@ function PostGigs({ userId }: { userId: string }) {
           )}
         />
         <Button type="submit" className="text-sm md:text-lg">
-          Post gig
+          {isloading ? (<div><ClipLoader size={20} color="#ffffff" /></div>) : (<p>Post gig</p>) }
+          
         </Button>
       </form>
     </Form>

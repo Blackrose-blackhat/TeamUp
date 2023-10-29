@@ -39,14 +39,14 @@ const page = () => {
     }
   }
   return (
-    <div className=" p-14 py-14 lg:p-24 lg:px-40  w-full  flex flex-row h-screen justify-center align-middle items-center">
+    <div className=" p-5 py-11 lg:p-24 lg:px-40  w-full  flex flex-row h-screen justify-center align-middle items-center">
       <motion.div
         variants={container}
         initial="hidden"
         animate={"show"}
        
         
-       className=" h-[70%] lg:h-[100%] gap-10 w-full flex flex-row justify-between items-center bg-white shadow-lg rounded-2xl shadow-slate-800">
+       className=" h-fit lg:h-[100%] gap-10 w-full flex flex-row justify-between items-center bg-white shadow-lg rounded-2xl shadow-slate-800">
         <div className="bg-[#2E9BE6] w-1/2 h-[100%] rounded-2xl hidden lg:flex ">
           <motion.div variants={image} initial="hidden" animate="show"  className="flex flex-col items-center justify-center h-[100%] w-full object-cover realative  ">
             <Image

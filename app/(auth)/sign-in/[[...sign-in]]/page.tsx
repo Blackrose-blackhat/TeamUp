@@ -38,7 +38,7 @@ const page = () => {
     }
   }
   return (
-    <div className=" p-14 py-14 lg:p-24 lg:px-40  w-full  flex flex-row h-screen justify-center align-middle items-center">
+    <div className=" p-5  lg:p-24 lg:px-40  w-full  flex flex-row h-screen justify-center align-middle items-center">
       <motion.div
         variants={container}
         initial="hidden"
