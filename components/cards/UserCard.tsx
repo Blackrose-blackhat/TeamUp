@@ -15,7 +15,7 @@ const UserCard = ({ id, username, imgUrl,bio }: Props) => {
  
 
   return (
-    <article className=" lg:w-full bg-white shadow-md shadow-slate-400   flex flex-col justify-center items-center align-middle ">
+    <article className=" rounded-lg lg:w-full bg-white shadow-xl shadow-slate-400   flex flex-col justify-center items-center align-middle ">
       <div className="      rounded-md  w-full lg:w-full align-middle items-center   justify-between  p-2 flex flex-col">
         <div className=" items-center gap-5 flex flex-col  justify-start w-full">
           <div className=" -mt-5 relative h-[5rem] w-[5rem] md:w-[6rem] md:h-[6rem] object-cover">
@@ -40,7 +40,7 @@ const UserCard = ({ id, username, imgUrl,bio }: Props) => {
             </p>
           </div>
         </div>
-        <div className="items-end align-baseline px-4 py-1 md:py-3   w-full hover:opacity-95">
+        <div className="items-end align-baseline px-4 py-1 md:py-3   w-1/2 hover:opacity-95">
           <Link href={`/profile/${id}`}>
             <Button className="w-full hover:text-white  hover:bg-[#104f8f] text-[#104f8f] bg-transparent border-2 border-[#104f8f] ">View</Button>
           </Link>

@@ -1,7 +1,7 @@
 "use server";
 import GigsCard from "@/components/cards/GigsCard";
 import { Button } from "@/components/ui/button";
-import { fetchGigsById } from "@/lib/actions/Gigs.action";
+import { fetchGigsById, fetchGigsBySkills } from "@/lib/actions/Gigs.action";
 import { fetchUser } from "@/lib/actions/user.actions";
 import { currentUser } from "@clerk/nextjs";
 import { MessagesSquare, PersonStandingIcon } from "lucide-react";
@@ -18,7 +18,7 @@ const page = async ({ params }: { params: { id: string } }) => {
   if (!userInfo?.onboarded) redirect("/onboarding");
 
   const post = await fetchGigsById(params.id);
-  
+
 
 
   

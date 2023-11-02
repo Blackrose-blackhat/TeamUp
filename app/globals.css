@@ -76,3 +76,11 @@ input[type=number]{
   border-radius: 20px;
   padding:10px
 }
+.auth-background{
+ 
+  background: rgb(13,171,150);
+  background: -moz-linear-gradient(156deg, rgba(13,171,150,1) 0%, rgba(0,94,242,1) 46%, rgba(22,150,143,1) 96%);
+  background: -webkit-linear-gradient(156deg, rgba(13,171,150,1) 0%, rgba(0,94,242,1) 46%, rgba(22,150,143,1) 96%);
+  background: linear-gradient(156deg, rgba(13,171,150,1) 0%, rgba(0,94,242,1) 46%, rgba(22,150,143,1) 96%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#0dab96",endColorstr="#16968f",GradientType=1);
+}

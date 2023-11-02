@@ -3,7 +3,6 @@ import { useState } from "react";
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -21,6 +20,8 @@ import { usePathname, useRouter } from "next/navigation";
 import { Textarea } from "../ui/textarea";
 import { createGig } from "@/lib/actions/Gigs.action";
 import { ClipLoader, FadeLoader } from "react-spinners";
+import { useToast } from "../ui/use-toast";
+
 interface Props {
   user: {
     id: string;
@@ -37,6 +38,8 @@ interface Props {
 }
 
 function PostGigs({ userId }: { userId: string }) {
+  const { toast } = useToast()
+
   const [selected, setSelected] = useState<string[]>([]);
   const [isloading,setisLoading] = useState<boolean>();
   const pathname = usePathname();
@@ -60,6 +63,12 @@ function PostGigs({ userId }: { userId: string }) {
       tags:values.requirement,
     });
     setisLoading(false);
+    toast({
+      title:"Gig created successfully!",
+      description:`${Date.now().toString()}`,
+      variant:"default",
+      color:"black"
+    })
     router.push("/")
   };
   return (

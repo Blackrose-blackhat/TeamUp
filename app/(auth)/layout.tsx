@@ -7,6 +7,7 @@ export const metadata = {
   description: "Find the best team you Deserve!",
 };
 const inter = Inter({ subsets: ["latin"] });
+
 export default function RootLayout({
   children,
 }: {
@@ -15,13 +16,15 @@ export default function RootLayout({
   return (
     <ClerkProvider>
       <html lang="en">
-        <body className={`${inter.className} bg-slate-400`}>
+        <body className={`${inter.className} h-screen auth-background `}>
+          
           <ClerkLoading>
             <div className="flex flex-col h-screen items-center justify-center ">
             <FadeLoader color="#36d7b7" />
             </div>
           </ClerkLoading>
           <ClerkLoaded>{children}</ClerkLoaded>
+          
         </body>
       </html>
     </ClerkProvider>

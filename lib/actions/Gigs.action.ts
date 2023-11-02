@@ -74,6 +74,8 @@ export async function fetchGigsById(id: string) {
   }
 }
 
+
+
 export async function deleteGigsById(id:string) {
   try{
     await connectToDB();
