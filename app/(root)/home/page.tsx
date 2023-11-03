@@ -5,13 +5,8 @@ import { currentUser } from "@clerk/nextjs";
 import GigsCard from "@/components/cards/GigsCard"
 import { excerpt } from "@/lib/utils";
 export default async function Home()  {
-
-
-  
-
   const user = await currentUser();
   const result = await fetchPosts(1 ,30);
-
 
 
 

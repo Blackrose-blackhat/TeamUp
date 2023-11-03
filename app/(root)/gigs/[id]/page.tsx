@@ -1,7 +1,7 @@
 "use server";
 import GigsCard from "@/components/cards/GigsCard";
 import { Button } from "@/components/ui/button";
-import { fetchGigsById, fetchGigsBySkills } from "@/lib/actions/Gigs.action";
+import { fetchGigsById } from "@/lib/actions/Gigs.action";
 import { fetchUser } from "@/lib/actions/user.actions";
 import { currentUser } from "@clerk/nextjs";
 import { MessagesSquare, PersonStandingIcon } from "lucide-react";
