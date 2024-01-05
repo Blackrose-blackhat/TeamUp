@@ -30,6 +30,9 @@ import { useUploadThing } from "@/lib/uploadthing";
 import { updateUser } from "@/lib/actions/user.actions";
 import { usePathname, useRouter } from "next/navigation";
 import { Textarea } from "../ui/textarea";
+import { Combobox } from "../ui/tags";
+import { frameworks } from "@/constatnts";
+import { frame } from "framer-motion";
 interface Props {
   user: {
     id: string;
@@ -53,6 +56,13 @@ interface Props {
 }
 
 const AccountProfile = ({ user, btnTitle }: Props) => {
+  const handleDeleteFramework = (frameworkToDelete: any) => {
+    const updatedFrameworks = selectedFramework.filter(
+      (framework) => framework !== frameworkToDelete
+    );
+    setSelectedFramework(updatedFrameworks);
+  };
+  const [selectedFramework, setSelectedFramework] = useState([]);
   const [selected, setSelected] = useState<string[]>([]);
 
   const [files, setfiles] = useState<File[]>([]);
@@ -252,17 +262,58 @@ const AccountProfile = ({ user, btnTitle }: Props) => {
               <FormItem>
                 <FormLabel>Skills</FormLabel>
                 <FormControl>
-                  <TagsInput
-                    value={selected}
-                    onChange={field.onChange}
-                    name="tags"
-                    placeHolder="Enter your skills and press Enter"
-                  />
+                  <div className="flex flex-row">
+                <Combobox
+                      onChange={field.onChange}
+                      options={frameworks}
+                      onSelect={(selectedValue, selectedImage) => {
+                        if (
+                          !selectedFramework.some(
+                            (framework) => framework.value === selectedValue
+                          ) &&
+                          selectedFramework.length < 10
+                        ) {
+                          const newSelectedFrameworks = [
+                            ...selectedFramework,
+                            selectedValue
+                          ];
+                          setSelectedFramework(newSelectedFrameworks);
+                          form.setValue(
+                            "skills",
+                            newSelectedFrameworks
+                          );
+                        }
+                      }}
+                    />
+                    <br />
+                    <div className="flex flex-wrap gap-5">
+                      {selectedFramework.map((framework) => (
+                        <p
+                          key={framework}
+                          className="gap-2 uppercase dark:bg-neutral-400/30 bg-neutral-200 rounded-[5px] p-1 px-2 flex flex-row items-center"
+                        >
+                          
+                        {framework}
+                          <button
+                            onClick={() => handleDeleteFramework(framework)}
+                            className="ml-2 dark:text-white text-black"
+                          >
+                            x
+                          </button>
+                        </p>
+                      ))}
+                     
+                      
+                    </div>
+                    
+                    <br />
+                    </div>
                 </FormControl>
                 <FormMessage />
               </FormItem>
             )}
           />
+          
           <div className="flex flex-col gap-3">
             <h3 className="text-2xl font-bold text-slate-800">Projects</h3>
             <h6 className="text-sm text-slate-500 ">Enter your most favourite project to showcase</h6>
